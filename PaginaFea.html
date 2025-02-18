@@ -1,0 +1,197 @@
+<html>
+    
+    <head>
+        <title>Actividad 2 - Horrible Edition</title>
+    </head>
+
+    <style>
+
+        #contenedor p{
+            background: radial-gradient(circle, red, blue, green);
+            padding: 10px;
+            border: 3px solid black;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        #contenedor ul{
+            color: white;
+            background: radial-gradient(circle, red, blue, green);
+            padding: 10px;
+            border: 3px solid black;
+            font-family: Tahoma, sans-serif;
+        }
+
+        #contenedor table{
+            font-family: "Brush Script MT";
+        }
+
+        body {
+            background-image: url("https://static8.depositphotos.com/1035372/853/i/950/depositphotos_8532954-stock-photo-ugly-man.jpg");
+            background-size: 100px 100px;
+            font-family: "Papyrus";
+        }
+        
+
+        #contenedor {
+            position: absolute;
+            right: 0;
+            background-color: cyan;
+            border: 10px dashed magenta;
+            border-radius: 50%;
+            transform: rotate(10deg);
+            box-shadow: 10px 10px 50px yellow;
+        }
+
+        h1 {
+            color: rgb(255, 0, 0);
+            font-size: 57px;
+            text-shadow: 5px 5px 5px yellow;
+        }
+
+        h2 {
+            color: rgb(0, 255, 26);
+            font-size: 40px;
+            text-decoration: underline wavy pink;
+        }
+
+        h3 {
+            color: rgb(0, 0, 255);
+            font-size: 30px;
+        }
+
+        a {
+            color: rgb(255, 238, 0);
+            font-weight: bold;
+            font-size: 30px;
+            text-decoration: blink;
+        }
+
+        a:hover {
+            color: purple;
+            background-color: orange;
+            font-size: 40px;
+            transform: skewX(20deg);
+        }
+
+        p {
+            color: white;
+        }
+
+        #color {
+            color: rgb(255, 255, 0);
+            font-family: sans-serif;
+        }
+
+        .box {
+            width: 200px;
+            height: 100px;
+            padding: 20px;
+            border: 5px solid black;
+            margin: 30px;
+            background-color: lightblue;
+        }
+    </style>
+
+    <body>
+        <div id="contenedor">
+            <h1>Actividad #2: HTML + CSS 🦸</h1>
+            <h2>HTML: </h2>
+            <h3>What is HTML? </h3>
+            <p>Is the standard language used to create and structure web pages.</p>
+
+            <h3>Explain the head and the body tags.</h3>
+            <p>- Head: Contains metadata and settings for the page</p>
+            <p>- Body: Contains the visible content of the page</p>
+
+            <h3 style="font-family: Brush Script MT;">Explain the section, article, aside, header, footer tag?</h3>
+            <p>* Section: Groups related content together within a webpage.</p>
+            <p>* Article: A self-contained piece of content.</p>
+            <p>* Aside: A section of a webpage that is distinct from the main content but related to it.</p>
+            <p>* Header: A structural element that contains introductory content or navigational aids.</p>
+            <p>* Footer: A structural element that contains supplementary content or navigational aids.</p>
+
+            <h3>Create an unordered list. Create an ordered list.</h3>
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+                <li>Item 4</li>
+                <li>Item 5</li>
+            </ul>
+
+            <h3>Create a basic table using html.</h3>
+            <table style="font-family: Brush Script MT;">
+                <tr>
+                    <th>Column 1</th>
+                    <th>Column 2</th>
+                    <th>Column 3</th>
+                </tr>
+                <tr>
+                    <td>Row 1, Column 1</td>
+                    <td>Row 1, Column 2</td>
+                    <td>Row 1, Column 3</td>
+                </tr>
+                <tr>
+                    <td>Row 2, Column 1</td>
+                    <td>Row 2, Column 2</td>
+                    <td>Row 2, Column 3</td>
+                </tr>
+            </table>
+
+
+
+            <h2>CSS: </h2>
+            <h3>What is CSS?</h3>
+            <p>Is a language used to style and design HTML elements on a webpage.</p>
+
+            <h3>What is the purpose of CSS?</h3>
+            <p>Is used to style and format HTML elements, making webpages visually appealing and user-friendly.</p>
+
+            <h3>How do you apply a CSS to an HTML (explain the 3 options)</h3>
+            <ul>
+                <li>Option 1:</li>
+                <li>Option 2:</li>
+                <li>Option 3:</li>
+            </ul>
+
+            <h3>What is a selector? What is a CSS rule?</h3>
+            <p>- Selector: A selector is used to target HTML elements that you want to style.</p>
+            <p>- Rule: A rule is a set of CSS properties that are applied to an element.</p>
+
+            <h3>Play the 32 levels of https://flukeout.github.io/</h3>
+            <img src="Flukeout32.png" width="300px">
+
+            <h3>Play the 24 levels of https://flexboxfroggy.com/</h3>
+            <img src="FlexyFrog24.png" width="300px">
+
+            <h3>Explain a:</h3>
+            <h3>Tag Selector</h3>
+            <p>Targets all elements of a specific type</p>
+            <h3>Class Selector</h3>
+            <p>Targets elements with a specific class attribute.</p>
+            <h3>Tag and Class Selector</h3>
+            <p>Targets only a specific tag with a certain class.</p>
+            <h3>Id Selector</h3>
+            <p>Targets a single element with a unique id.</p>
+
+            <h3>What is a class? What is an id? How are they related to CSS?</h3>
+            <p>- Class: is an attribute that can be assigned to multiple elements.</p>
+            <p>- Id: is an attribute that can be assigned to only one element.</p>
+            <p>- Class and Id are related to CSS because they are used to target specific elements.</p>
+
+            <h3>Explain the CSS Box Model? Show an example.</h3>
+            <p>Describes how elements are structured in a webpage.</p>
+            <p>Example:</p>
+            <div class="box">This is a box!</div>
+
+            <h3>How can you change the font color using CSS?</h3>
+            <p id="color"> Yes </p>
+
+
+                
+
+            
+        </div>
+    </body>
+
+</html>
