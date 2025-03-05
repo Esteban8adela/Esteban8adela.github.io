@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jelly Belly Recipes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-6">
+        <h1 class="text-2xl font-bold text-center mb-4">Jelly Belly Recipes</h1>
+        <button id="fetchRecipes" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Get Recipes</button>
+        <div id="recipesContainer" class="mt-4 space-y-4"></div>
+    </div>
+
+    <div class="max-w-3xl mx-auto bg-white p-6 mt-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-bold mb-4">Tutorial: Cómo usar la API en JavaScript</h2>
+        <p>Para consumir un endpoint de la API en el cliente, usa <code>fetch()</code>:</p>
+        <pre class="bg-gray-200 p-4 rounded">
+fetch("https://jellybellywikiapi.onrender.com/api/Recipes/24")
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`${response.status}: ${response.statusText}`);
+        }
+        return response.json();
+    })
+    .then(recipe => {
+        document.getElementById("results").innerHTML = `
+            <div class='p-4 bg-gray-200 rounded-lg shadow'>
+                <h2 class='text-xl font-semibold'>${recipe.name}</h2>
+                <p class='text-sm text-gray-700'>Recipe for ${recipe.makingAmount}</p>
+                <p class='mt-2'>${recipe.description}</p>
+                <img src='${recipe.imageUrl}' alt='${recipe.name}' class='mt-4 w-full rounded-lg shadow'>
+                <a href='/recipes/${recipe.recipeId}' class='text-blue-500 hover:underline mt-2 block'>Check out the full recipe</a>
+            </div>`;
+    })
+    .catch(error => console.error("Error fetching data:", error));
+        </pre>
+        <p>Este código obtiene una receta de la API y la muestra en la página con su imagen y descripción.</p>
+    </div>
+
+    <script>
+        document.getElementById('fetchRecipes').addEventListener('click', async () => {
+            try {
+                const response = await fetch('https://jellybellywikiapi.onrender.com/api/Recipes/24');
+                if (!response.ok) throw new Error(`Error: ${response.status}`);
+                const recipe = await response.json();
+                
+                const recipeCard = document.createElement('div');
+                recipeCard.classList.add('p-4', 'border', 'rounded', 'shadow-md', 'bg-white');
+                recipeCard.innerHTML = `
+                    <h2 class="text-xl font-semibold">${recipe.name}</h2>
+                    <img src="${recipe.imageUrl}" alt="${recipe.name}" class="w-full h-40 object-cover mt-2 rounded">
+                    <p class="text-gray-600 mt-2">${recipe.description}</p>
+                    <p class="font-semibold">Yields: ${recipe.makingAmount}</p>
+                    <button class="toggleDetails mt-2 text-blue-500 underline">Show full recipe</button>
+                    <div class="details hidden mt-2">
+                        <h3 class="font-semibold">Ingredients:</h3>
+                        <ul class="list-disc list-inside">${recipe.ingredients.map(i => `<li>${i}</li>`).join('')}</ul>
+                        <h3 class="font-semibold mt-2">Directions:</h3>
+                        <ol class="list-decimal list-inside">${recipe.directions.map(d => `<li>${d}</li>`).join('')}</ol>
+                    </div>
+                `;
+                
+                recipeCard.querySelector('.toggleDetails').addEventListener('click', function () {
+                    const details = this.nextElementSibling;
+                    details.classList.toggle('hidden');
+                    this.textContent = details.classList.contains('hidden') ? 'Show full recipe' : 'Hide full recipe';
+                });
+                
+                document.getElementById('recipesContainer').appendChild(recipeCard);
+            } catch (error) {
+                console.error(error);
+            }
+        });
+    </script>
+</body>
+</html>
+
