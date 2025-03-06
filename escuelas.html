@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escuelas</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body class="container center-align">
+
+    <h1 class="blue-text text-darken-2">Lista de Escuelas</h1>
+    
+    <div class="section">
+        <a href="/bienvenida" class="waves-effect waves-light btn blue">Bienvenida</a>
+        <a href="/donantes" class="waves-effect waves-light btn green">Donantes</a>
+        <a href="/equipo" class="waves-effect waves-light btn purple">Equipo</a>
+        <a href="/opinion" class="waves-effect waves-light btn yellow">Opinión</a>
+    </div>
+
+    <p class="flow-text">Escuelas:</p>
+
+    <ul id="listaEscuelas" class="collection"></ul>
+
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+        async function obtenerEscuelas() {
+            try {
+                const listaEscuelas = await fetch("/api/escuelas");
+                const jsonLE = await listaEscuelas.json();
+
+                const lista = document.getElementById("listaEscuelas");
+                lista.innerHTML = "";
+
+                jsonLE.forEach(escuela => {
+                    let item = document.createElement("li");
+                    item.classList.add("collection-item");
+                    item.textContent = `${escuela.nombre}: ${escuela.direccion}`;
+                    lista.appendChild(item);
+                });
+
+            } catch (error) {
+                console.error("Error al obtener escuelas:", error);
+            }
+        }
+
+        obtenerEscuelas();
+    </script>
+
+</body>
+</html>

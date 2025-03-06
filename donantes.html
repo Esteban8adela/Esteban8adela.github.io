@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donantes</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body class="container center-align">
+
+    <h1 class="green-text text-darken-2">Donantes</h1>
+
+    <div class="section">
+        <a href="/bienvenida" class="waves-effect waves-light btn green">Ir a Bienvenida</a>
+        <a href="/escuelas" class="waves-effect waves-light btn blue">Ir a Escuelas</a>
+        <a href="/equipo" class="waves-effect waves-light btn purple">Ir a Equipo</a>
+        <a href="/opinion" class="waves-effect waves-light btn yellow">Ir a Opinión</a>
+    </div>
+
+    <ul id="listaDonantes" class="collection"></ul>
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        async function obtenerDonantes() {
+            try {
+                const listaDonantes = await fetch("/api/donantes");
+                const jsonLD = await listaDonantes.json();
+
+                const lista = document.getElementById("listaDonantes");
+                lista.innerHTML = "";
+
+                jsonLD.forEach(donante => {
+                    let item = document.createElement("li");
+                    item.classList.add("collection-item");
+                    item.textContent = `${donante.nombre}: ${donante.cantidad}`;
+                    lista.appendChild(item);
+                });
+
+            } catch (error) {
+                console.error("Error al obtener escuelas:", error);
+            }
+        }
+
+        obtenerDonantes();
+    </script>
+
+</body>
+</html>
